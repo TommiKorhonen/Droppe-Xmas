@@ -1,0 +1,29 @@
+// base
+@media screen and (max-width: 640px) {
+    .navContainer {
+        gap: 16px;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+//sm
+@media screen and (min-width: 640px) {
+    .container{
+        max-width: 640px;
+    }
+    .navContainer {
+        flex-wrap: wrap;
+    }
+}
+//md
+@media screen and (min-width: 768px) {
+    .container{
+        max-width: 768px;
+    }
+}
+//lg
+@media screen and (min-width:1024px) {
+    .container{
+        max-width:1024px;
+    }
+} 
