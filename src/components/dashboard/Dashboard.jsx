@@ -3,7 +3,7 @@ import Wishlists from './wishlists/Wishlists'
 
 const Dashboard = () => {
     return (
-        <main>
+        <main >
             <Wishlists />
         </main>
     )

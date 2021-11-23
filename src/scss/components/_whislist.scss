@@ -15,17 +15,19 @@
         padding: 1rem;
     };
     .cardItems {
+        
+    };
+    .productContainer {
+        border-radius: 0.5rem;
+        border: 1px solid black;
+        padding: 1rem;
         gap: 1rem;
         border-bottom: 1px solid black;
         padding: 2.5rem 1rem;
     };
-    .cardImg {
-        border-radius: 0.5rem;
-        border: 1px solid black;
-        padding: 1rem;
-    };
     .cardBtns {
         gap: 1rem;
+      
         .buttonAccept {
             background-color: rgb(24, 139, 24);
             padding: 1rem;
@@ -39,19 +41,38 @@
     };
     .approvedContainer {
         padding: 1.5rem 0;
-        gap: 1rem;
         color: white;
         margin: auto 0;
         .approved {
+            color: black;
+            padding: 0.5rem 4rem;
+            gap: 1rem
+        }
+        .approvedSpan {
             background-color: green;
             padding: 0.5rem 4rem;
         }
         .declined {
+            color: black;
+            padding: 0.5rem 4rem;
+            gap: 1rem
+        }
+        .declinedSpan {
             background-color: rgb(250, 43, 43); 
             padding: 0.5rem 4.2rem;
+            margin: 2rem
+            
         };
     };
 };
 .loading {
-    color: white;
+    text-align: center;
+    margin: auto;
+    
+}
+.black {
+    color: black;
+}
+.wishListContainer{
+    min-height: 100vh;
 }
