@@ -5,27 +5,27 @@ const initialState = {
     children: [
 
         {
-            "name": "Ari",
-            "id": 1
+            name: "Ari",
+            id: 1
         },
         {
-            "name": "Jari",
-            "id": 2
-        },
-
-        {
-            "name": "Ella",
-            "id": 3
+            name: "Jari",
+            id: 2
         },
 
         {
-            "name": "Pekka",
-            "id": 4
+            name: "Ella",
+            id: 3
         },
 
         {
-            "name": "Anssi",
-            "id": 5
+            name: "Pekka",
+            id: 4
+        },
+
+        {
+            name: "Anssi",
+            id: 5
         },
     ],
     ChildrenApprovedItems: [],

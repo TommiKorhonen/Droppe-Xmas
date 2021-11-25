@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import Declined from '../dashboard/wishlists/approved&Declined/Declined';
-import Users from '../dashboard/wishlists/Users';
+import Children from '../sandbox/Children';
 
 const CartDiscarded = () => {
     const allDiscarded = useSelector(
@@ -12,7 +12,7 @@ const CartDiscarded = () => {
             {allDiscarded.map((discarded) => {
                 return (
                     <div className="declinedSpan">
-                        <Users userId={discarded.userId} />
+                        <Children userId={discarded.userId} />
                         <Declined declinedProducts={discarded.products} />
                     </div>
                 )

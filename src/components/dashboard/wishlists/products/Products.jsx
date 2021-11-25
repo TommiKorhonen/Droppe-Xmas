@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import ProductFinder from '../../../../api/ProductFinder';
-import { setProduct } from '../../../../redux/reducers/wishListReducer';
-import Approved from '../approved&Declined/Approved';
+
 
 const Products = ({ productId, props }) => {
     const [isLoading, setIsLoading] = useState(false)
@@ -40,9 +39,9 @@ const Products = ({ productId, props }) => {
         <>
             {isLoading ? <h2 >Loading...</h2> :
                 <>
-                    <div className="cardItems flex " style={{ gap: 36 }}>
+                    <div className="cardItems flex " style={{ gap: 96 }}>
                         <img src={products.img} style={{ height: 100, width: 96 }} alt="" />
-                        <div className="flex flex-col items-start justify-center">
+                        <div className="flex  flex-col items-start justify-center">
                             <p id="product_title">
                                 {products.title}
                             </p>
