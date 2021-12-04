@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "react-dom/test-utils";
 
 
 const initialState = {
@@ -29,7 +30,8 @@ const initialState = {
         },
     ],
     ChildrenApprovedItems: [],
-    ChildrenDiscardedItems: []
+    ChildrenDiscardedItems: [],
+    cart: []
 }
 
 export const childrenSlice = createSlice({
@@ -64,11 +66,43 @@ export const childrenSlice = createSlice({
                 copyDiscardedState.push(action.payload);
             }
             state.ChildrenDiscardedItems = copyDiscardedState;
-        }
+        },
+        setCartItems: (state, action) => {
+            const copyCartState = [...state.cart];
+            const product = { productId: action.payload.productId, quantity: 1 }
+            const findIndex = copyCartState.findIndex(
+                (el) => el.productId === action.payload.productId
+            );
+            if (findIndex !== -1) {
+                copyCartState[findIndex].quantity++;
+            } else {
+                copyCartState.push(product);
+            }
+            state.cart = copyCartState;
+        },
+        addProductsFromApi: (state, action) => {
+            state.products = action.payload;
+        },
+        // Changes price of product if there is Discount on it
+        changeProductPrice: (state, action) => {
+            const copyProducts = [...state.ChildrenApprovedItems];
+            const findIndex = copyProducts.findIndex(
+                (el) => el.id === action.payload.id
+            );
+            //Discount if more than 1 quantity
+            if (findIndex !== -1) {
+                copyProducts[findIndex] = {
+                    ...copyProducts[findIndex],
+                    discount: action.payload.discount,
+                };
+            }
+            state.products = copyProducts;
+        },
+
     }
 
 })
 
-export const { getChildren, setChildrenItemApproved, setChildrenItemDiscarded } = childrenSlice.actions
+export const { getChildren, setChildrenItemApproved, setChildrenItemDiscarded, setCartItems } = childrenSlice.actions
 
 export default childrenSlice.reducer

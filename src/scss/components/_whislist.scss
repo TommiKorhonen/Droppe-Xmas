@@ -23,7 +23,7 @@
     .productContainer {
         border-radius: 0.5rem;
         border: 1px solid black;
-        padding: 0.25rem;
+        padding: 0 0.6rem;
         
         
     };
@@ -80,4 +80,7 @@
 }
 .testing {
     border-bottom: 1px solid black;
+}
+.discount {
+    color: red;
 }

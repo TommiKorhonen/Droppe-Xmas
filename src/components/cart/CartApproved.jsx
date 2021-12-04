@@ -10,11 +10,11 @@ const CartApproved = () => {
     return (
         <div>
             {allApproved.map((approved) => {
+                console.log(approved)
                 return (
                     <div>
                         <Children userId={approved.userId} />
                         <Approved acceptedProducts={approved.products} />
-                        {/* <CartDiscarded /> */}
                     </div>
                 )
             })}
