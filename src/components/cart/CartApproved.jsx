@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import Approved from '../dashboard/wishlists/approved&Declined/Approved'
 import Children from '../sandbox/Children';
-import CartDiscarded from './CartDiscarded';
+
 const CartApproved = () => {
     const allApproved = useSelector(
         (state) => state.children.ChildrenApprovedItems

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ProductFinder from '../../../../api/ProductFinder';
-import { setProduct } from '../../../../redux/reducers/wishListReducer';
 
 // interface ProdcutProps {
 //     productId: number
@@ -17,8 +16,6 @@ import { setProduct } from '../../../../redux/reducers/wishListReducer';
 const Products = ({ productId }) => {
     const [isLoading, setIsLoading] = useState(false)
     const discountPercent = useSelector((state) => state.products.products)
-    const dispatch = useDispatch()
-    const [test, setTest] = useState();
     const [products, setProducts] = useState({
         title: "",
         price: 0,
@@ -50,7 +47,6 @@ const Products = ({ productId }) => {
                 id: productId,
                 discount: findDiscountFromState()
             })
-            // dispatch(setProduct(response.data))
             setIsLoading(false)
         } catch (err) {
             console.log(err)

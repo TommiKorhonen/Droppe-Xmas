@@ -74,7 +74,7 @@ const Cart = () => {
                     <p>{sumTotal().toFixed(2)} €</p>
                 </div>
                 <CartApproved />
-                <CartDiscarded />
+                <CartDiscarded items={itemsDiscarded.length === 0} />
             </div>
         )
 

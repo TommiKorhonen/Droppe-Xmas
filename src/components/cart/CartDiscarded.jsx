@@ -1,16 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import Declined from '../dashboard/wishlists/approved&Declined/Declined';
 import Children from '../sandbox/Children';
 
-const CartDiscarded = () => {
-    const [isDiscarded, setIsDiscarded] = useState(false)
+const CartDiscarded = ({ items }) => {
     const allDiscarded = useSelector(
         (state) => state.children.ChildrenDiscardedItems
     );
     return (
-        <div>
-            {/* <h2>Discarded items</h2> */}
+        <div style={{ marginTop: 36 }}>
+            {items ? "" : <h2 style={{ color: "red" }}>Discarded items</h2>}
             {allDiscarded.map((discarded) => {
                 return (
                     <div className="declinedSpan">

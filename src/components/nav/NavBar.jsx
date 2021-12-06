@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
 
 const NavBar = () => {
-    // const { myCart } = useContext(ProductsContext);
     const allApproved = useSelector(
         (state) => state.children.ChildrenApprovedItems
     );
@@ -16,7 +15,6 @@ const NavBar = () => {
         return length
     }
 
-    const [isOpen, setIsOpen] = useState(false);
     return (
         <nav>
             <div className="navContainer flex">
