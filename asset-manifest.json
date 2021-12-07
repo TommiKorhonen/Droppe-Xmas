@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Droppe-Xmas/static/css/main.9b711bf7.chunk.css",
-    "main.js": "/Droppe-Xmas/static/js/main.52c112ee.chunk.js",
-    "main.js.map": "/Droppe-Xmas/static/js/main.52c112ee.chunk.js.map",
+    "main.css": "/Droppe-Xmas/static/css/main.b237046f.chunk.css",
+    "main.js": "/Droppe-Xmas/static/js/main.f3c5f7d2.chunk.js",
+    "main.js.map": "/Droppe-Xmas/static/js/main.f3c5f7d2.chunk.js.map",
     "runtime-main.js": "/Droppe-Xmas/static/js/runtime-main.5b233325.js",
     "runtime-main.js.map": "/Droppe-Xmas/static/js/runtime-main.5b233325.js.map",
     "static/js/2.400fe62e.chunk.js": "/Droppe-Xmas/static/js/2.400fe62e.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.faebefd9.chunk.js": "/Droppe-Xmas/static/js/3.faebefd9.chunk.js",
     "static/js/3.faebefd9.chunk.js.map": "/Droppe-Xmas/static/js/3.faebefd9.chunk.js.map",
     "index.html": "/Droppe-Xmas/index.html",
-    "static/css/main.9b711bf7.chunk.css.map": "/Droppe-Xmas/static/css/main.9b711bf7.chunk.css.map",
+    "static/css/main.b237046f.chunk.css.map": "/Droppe-Xmas/static/css/main.b237046f.chunk.css.map",
     "static/js/2.400fe62e.chunk.js.LICENSE.txt": "/Droppe-Xmas/static/js/2.400fe62e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5b233325.js",
     "static/js/2.400fe62e.chunk.js",
-    "static/css/main.9b711bf7.chunk.css",
-    "static/js/main.52c112ee.chunk.js"
+    "static/css/main.b237046f.chunk.css",
+    "static/js/main.f3c5f7d2.chunk.js"
   ]
 }
