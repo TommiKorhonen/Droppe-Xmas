@@ -60,7 +60,7 @@ const Products = ({ productId }) => {
         <>
             {isLoading ? <h2 >Loading...</h2> :
                 <>
-                    <div className="cardItems flex " style={{ gap: 96 }}>
+                    <div className="cardItems flex" style={{ gap: 96 }}>
                         <img src={products.img} style={{ height: 100, width: 96 }} alt="" />
                         <div className="flex  flex-col items-start justify-center">
                             <p id="product_title">

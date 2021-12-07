@@ -37,7 +37,7 @@ const ConfirmedScreen = () => {
                 <button type="submit" onClick={() => postCart()}>Submit Cart</button>
                 {cart.map((items) => {
                     return (
-                        <div className="grid grid-cols-2 confirmedBox" style={{ marginTop: 20 }}>
+                        <div key={items.productId} className="grid grid-cols-2 confirmedBox" style={{ marginTop: 20 }}>
                             <div className="flex items-center justify-center" >
                                 <Products productId={items.productId} />
                             </div>

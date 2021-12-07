@@ -9,10 +9,10 @@ const CartApproved = () => {
     );
     return (
         <div>
-            {allApproved.map((approved) => {
+            {allApproved.map((approved, index) => {
                 console.log(approved)
                 return (
-                    <div>
+                    <div key={index} className="testi" style={{ paddingBottom: 16 }}>
                         <Children userId={approved.userId} />
                         <Approved acceptedProducts={approved.products} />
                     </div>
