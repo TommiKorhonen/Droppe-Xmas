@@ -1,7 +1,24 @@
+
+import { RootState } from './../store/store';
 import { createSlice } from "@reduxjs/toolkit";
 
 
-const initialState = {
+interface IReduxChildrenSlice {
+    children: { id: number; name: string; }[];
+    ChildrenApprovedItems: IApproved[];
+    ChildrenDiscardedItems: IApproved[];
+    cart: IProduct[];
+}
+export interface IApproved {
+    userId: number;
+    products: IProduct[];
+}
+export interface IProduct {
+    productId: number;
+    quantity: number;
+}
+
+const initialState: IReduxChildrenSlice = {
     children: [
 
         {
@@ -37,9 +54,6 @@ export const childrenSlice = createSlice({
     name: 'children',
     initialState,
     reducers: {
-        getChildren: (state, action) => {
-            return state.children
-        },
         setChildrenItemApproved: (state, action) => {
             const copyApprovedState = [...state.ChildrenApprovedItems];
             const findIndex = copyApprovedState.findIndex(
@@ -79,29 +93,14 @@ export const childrenSlice = createSlice({
             }
             state.cart = copyCartState;
         },
-        addProductsFromApi: (state, action) => {
-            state.products = action.payload;
-        },
+
         // Changes price of product if there is Discount on it
-        changeProductPrice: (state, action) => {
-            const copyProducts = [...state.ChildrenApprovedItems];
-            const findIndex = copyProducts.findIndex(
-                (el) => el.id === action.payload.id
-            );
-            //Discount if more than 1 quantity
-            if (findIndex !== -1) {
-                copyProducts[findIndex] = {
-                    ...copyProducts[findIndex],
-                    discount: action.payload.discount,
-                };
-            }
-            state.products = copyProducts;
-        },
+
 
     }
 
 })
 
-export const { getChildren, setChildrenItemApproved, setChildrenItemDiscarded, setCartItems } = childrenSlice.actions
-
+export const { setChildrenItemApproved, setChildrenItemDiscarded, setCartItems } = childrenSlice.actions
+export const selectCount = (state: RootState) => state;
 export default childrenSlice.reducer

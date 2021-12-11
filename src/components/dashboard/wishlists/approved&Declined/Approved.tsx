@@ -1,14 +1,12 @@
 import React from 'react'
 import Products from '../products/Products'
+import { IProduct } from '../../../../redux/reducers/childrenSlice'
 
+interface IApprovedProps {
+    acceptedProducts: IProduct[];
+}
 
-const Approved = ({ acceptedProducts }) => {
-    // const { acceptedProducts, products, setProducts, editIndex, setEditIndex } = useContext(ProductsContext)
-
-    // useEffect(() => {
-
-    // }, [acceptedProducts])
-
+const Approved: React.FC<IApprovedProps> = ({ acceptedProducts }) => {
     return (
         <>
             <span id="approvedLength" className="approvedSpan">Approved items - {acceptedProducts.length}</span>

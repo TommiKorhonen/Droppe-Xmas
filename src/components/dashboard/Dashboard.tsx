@@ -1,7 +1,7 @@
 import React from 'react'
 import Wishlists from './wishlists/Wishlists'
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
     return (
         <main >
             <Wishlists />

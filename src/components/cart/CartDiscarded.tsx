@@ -1,10 +1,14 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from '../../redux/hooks/hooks';
 import Declined from '../dashboard/wishlists/approved&Declined/Declined';
 import Children from '../sandbox/Children';
 
-const CartDiscarded = ({ items }) => {
-    const allDiscarded = useSelector(
+interface ICartDiscardedProps {
+    items: boolean;
+}
+
+const CartDiscarded: React.FC<ICartDiscardedProps> = ({ items }) => {
+    const allDiscarded = useAppSelector(
         (state) => state.children.ChildrenDiscardedItems
     );
     return (
@@ -12,7 +16,7 @@ const CartDiscarded = ({ items }) => {
             {items ? "" : <h2 style={{ color: "red" }}>Discarded items</h2>}
             {allDiscarded.map((discarded) => {
                 return (
-                    <div className="declinedSpan">
+                    <div key={discarded.userId} className="declinedSpan">
                         <Children userId={discarded.userId} />
                         <Declined declinedProducts={discarded.products} />
                     </div>

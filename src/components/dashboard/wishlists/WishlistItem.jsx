@@ -7,7 +7,7 @@ import Declined from './approved&Declined/Declined';
 import Products from './products/Products';
 import Children from '../../sandbox/Children';
 import Loading from '../../loading/Loading';
-import { changeProductPrice } from '../../../redux/reducers/wishListReducer';
+import { changeProductPrices } from '../../../redux/reducers/wishListReducer';
 const WishlistItem = ({ products, userId }) => {
     const [acceptedProducts, setAcceptedProducts] = useState([])
     const [isLoading, setIsLoading] = useState(false)
@@ -61,7 +61,7 @@ const WishlistItem = ({ products, userId }) => {
         );
         if (howmanyItems.length) {
             dispatch(
-                changeProductPrice({
+                changeProductPrices({
                     id: productId,
                     discount: (howmanyItems.length + 1) * 10,
                 })

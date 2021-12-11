@@ -13,7 +13,7 @@ const ConfirmedScreen = () => {
             const response = await CartFinder.post("/", {
                 "products": cart
             })
-            navigate("/");
+            navigate("/Droppe-Xmas");
             setIsLoading(false)
             console.log(response)
             window.location.reload()

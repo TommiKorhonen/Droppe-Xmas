@@ -1,11 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../redux/hooks/hooks';
 
 
 
-const NavBar = () => {
-    const allApproved = useSelector(
+const NavBar: React.FC = () => {
+    const allApproved = useAppSelector(
         (state) => state.children.ChildrenApprovedItems
     );
     const lengthofApprovedItems = () => {
@@ -20,7 +20,7 @@ const NavBar = () => {
             <div className="navContainer flex">
                 {/* left */}
                 <div>
-                    <Link to="/">
+                    <Link to="/Droppe-Xmas">
                         <h2 className="text-3xl navh2">Droppe Xmas</h2>
                     </Link >
                 </div>

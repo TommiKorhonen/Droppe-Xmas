@@ -1,6 +1,10 @@
 import React from 'react'
 
-const CartCombined = ({ items }) => {
+interface ICartCombinedProps {
+    items: boolean;
+}
+
+const CartCombined: React.FC<ICartCombinedProps> = ({ items }) => {
     return (
         <div>
             {items && <h2 style={{ textAlign: "center" }}>No items added yet </h2>}

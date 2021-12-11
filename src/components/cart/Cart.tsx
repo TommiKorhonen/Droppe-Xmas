@@ -1,5 +1,6 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '../../redux/hooks/hooks';
 import { fullPrice, sumPriceNoDiscount } from '../../redux/reducers/wishListReducer';
 
 import CartApproved from './CartApproved';
@@ -8,16 +9,16 @@ import CartDiscarded from './CartDiscarded';
 import CartHeader from './CartHeader'
 const Cart = () => {
     const dispatch = useDispatch();
-    const cart = useSelector(
+    const cart = useAppSelector(
         (state) => state.children.cart
     );
-    const itemsDiscarded = useSelector(
+    const itemsDiscarded = useAppSelector(
         (state) => state.children.ChildrenDiscardedItems
     );
-    const AllProducts = useSelector(
+    const AllProducts = useAppSelector(
         (state) => state.products.products
     );
-    const calculateQuantDiscount = (productId, quantity) => {
+    const calculateQuantDiscount = (productId: number, quantity: number) => {
         const findProductPrice = AllProducts.find((el) => el.id === productId);
         if (findProductPrice) {
             let value = findProductPrice.price * quantity;
@@ -27,7 +28,7 @@ const Cart = () => {
         }
     };
 
-    const calculatePrice = (productId, quantity) => {
+    const calculatePrice = (productId: number, quantity: number) => {
         const findProductPrice = AllProducts.find((el) => el.id === productId);
         if (findProductPrice) {
             const calculatedPrice = findProductPrice.price * quantity;
@@ -36,26 +37,25 @@ const Cart = () => {
         }
     };
     const sumTotal = () => {
-        const copiedArr = [];
+        const copiedArr: number[] = [];
         cart.map((el) => {
             if (el.quantity > 1) {
                 const findItem = calculateQuantDiscount(el.productId, el.quantity);
-                dispatch(fullPrice(findItem.toFixed(2)))
-                return copiedArr.push(findItem);
+                dispatch(fullPrice(findItem?.toFixed(2)))
+                return copiedArr.push(Number(findItem));
             } else {
                 const item = calculatePrice(el.productId, el.quantity)
-                // dispatch(fullPrice(item))
-                return copiedArr.push(item)
+                return copiedArr.push(Number(item))
             }
 
         })
         if (copiedArr.length === 0) {
             return ""
         } else {
-            const reducer = (previousValue, currentValue) => previousValue + currentValue;
+            const reducer = (previousValue: number, currentValue: number) => previousValue + currentValue;
             const totalPrice = copiedArr.reduce(reducer)
             dispatch(fullPrice(totalPrice.toFixed(2)))
-            return totalPrice
+            return totalPrice.toFixed(2)
         }
     }
     if (cart.length === 0) {
@@ -71,7 +71,8 @@ const Cart = () => {
                 <CartHeader items={cart.length === 0 && itemsDiscarded.length === 0} />
                 <div>
                     <span>Total Price</span>
-                    <p>{sumTotal().toFixed(2)} €</p>
+                    <p>{sumTotal()} €</p>
+                    {/* .toFixed(2) */}
                 </div>
                 <CartApproved />
                 <CartDiscarded items={itemsDiscarded.length === 0} />

@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+
 import ProductFinder from '../../../../api/ProductFinder';
+import { useAppSelector } from '../../../../redux/hooks/hooks';
 
-// interface ProdcutProps {
-//     productId: number
+interface IProdcutProps {
+    productId: number
+}
 
 // }
-// interface ProductStateDesc {
-//     title: string;
-//     price: number;
-//     id: number;
-//     img: string;
-// }
+export interface IProductStateDesc {
+    id: number;
+    title: string;
+    price: number;
+    img: string;
+    discount?: string
+}
 
-const Products = ({ productId }) => {
-    const [isLoading, setIsLoading] = useState(false)
-    const discountPercent = useSelector((state) => state.products.products)
-    const [products, setProducts] = useState({
+const Products: React.FC<IProdcutProps> = ({ productId }) => {
+    const [isLoading, setIsLoading] = useState(false);
+    const discountPercent = useAppSelector((state) => state.products.products);
+    const [products, setProducts] = useState<IProductStateDesc>({
         title: "",
         price: 0,
         img: "",
@@ -29,7 +32,7 @@ const Products = ({ productId }) => {
             const findDiscount = discountPercent.find(
                 (el) => el.id === productId
             )
-            return findDiscount.discount
+            return findDiscount?.discount
         } else {
             return ""
         }
