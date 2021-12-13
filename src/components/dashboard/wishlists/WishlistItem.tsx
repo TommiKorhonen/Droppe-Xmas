@@ -1,19 +1,33 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import CartFinder from '../../../api/CartFinder';
-import { setCartItems, setChildrenItemApproved, setChildrenItemDiscarded } from '../../../redux/reducers/childrenSlice';
+import { IProduct, setCartItems, setChildrenItemApproved, setChildrenItemDiscarded } from '../../../redux/reducers/childrenSlice';
 import Approved from './approved&Declined/Approved';
 import Declined from './approved&Declined/Declined';
 import Products from './products/Products';
 import Children from '../../sandbox/Children';
 import Loading from '../../loading/Loading';
 import { changeProductPrices } from '../../../redux/reducers/wishListReducer';
-const WishlistItem = ({ products, userId }) => {
-    const [acceptedProducts, setAcceptedProducts] = useState([])
+import { useAppSelector } from '../../../redux/hooks/hooks';
+
+interface IWishlistItemProps {
+    userId: number;
+    products: string;
+}
+export interface ICart {
+    products: IProduct[];
+    productId: number
+    quantity: number
+}
+
+const WishlistItem: React.FC<IWishlistItemProps> = ({ products, userId }) => {
+    const [acceptedProducts, setAcceptedProducts] = useState<IProduct[]>([])
     const [isLoading, setIsLoading] = useState(false)
-    const [discardedProducts, setDiscardedProducts] = useState([])
-    const [carts, setCarts] = useState([]);
-    const allApproved = useSelector(
+    const [discardedProducts, setDiscardedProducts] = useState<IProduct[]>([])
+    const [carts, setCarts] = useState<ICart[]>([]);
+    const dispatch = useDispatch();
+
+    const allApproved = useAppSelector(
         (state) => state.children.ChildrenApprovedItems
     );
     const getCarts = async () => {
@@ -28,8 +42,7 @@ const WishlistItem = ({ products, userId }) => {
         };
     };
 
-    const dispatch = useDispatch();
-    const addProduct = (product, id) => {
+    const addProduct = (product: IProduct) => {
         console.log(product)
         const copiedState = [...acceptedProducts, product];
         setAcceptedProducts(copiedState);
@@ -44,7 +57,7 @@ const WishlistItem = ({ products, userId }) => {
         }))
         discountProduct(product.productId)
     };
-    const declineProduct = (product) => {
+    const declineProduct = (product: IProduct) => {
         const copiedState = [...discardedProducts, product];
         setDiscardedProducts(copiedState);
         RemoveProductFromContainer(product);
@@ -53,8 +66,8 @@ const WishlistItem = ({ products, userId }) => {
             products: [product]
         }))
     };
-    const discountProduct = (productId) => {
-        const allProducts = [];
+    const discountProduct = (productId: number) => {
+        const allProducts: any[] = [];
         allApproved.map((el) => el.products.map((z) => allProducts.push(z)));
         const howmanyItems = allProducts.filter(
             (el) => el.productId === productId
@@ -69,7 +82,7 @@ const WishlistItem = ({ products, userId }) => {
         }
     };
 
-    const RemoveProductFromContainer = (product) => {
+    const RemoveProductFromContainer = (product: IProduct) => {
         const copiedCart = [...carts]
         setCarts(copiedCart.filter((cart) => {
             return cart.productId !== product.productId
@@ -90,7 +103,7 @@ const WishlistItem = ({ products, userId }) => {
                                     <div className="productContainer grid grid-cols-1">
                                         <Products key={data.productId} productId={data.productId} />
                                         <div className="flex col-start-3 items-center justify-end cardBtns">
-                                            <button type="submit" onClick={() => addProduct(data, userId)} className="buttonAccept">Accept</button>
+                                            <button type="submit" onClick={() => addProduct(data)} className="buttonAccept">Accept</button>
                                             <button type="submit" onClick={() => declineProduct(data)} className="buttonDelete">Delete</button>
                                         </div>
                                     </div>

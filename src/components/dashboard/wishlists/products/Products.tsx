@@ -13,7 +13,7 @@ export interface IProductStateDesc {
     title: string;
     price: number;
     img: string;
-    discount?: string
+    discount?: number
 }
 
 const Products: React.FC<IProdcutProps> = ({ productId }) => {
@@ -24,7 +24,7 @@ const Products: React.FC<IProdcutProps> = ({ productId }) => {
         price: 0,
         img: "",
         id: 0,
-        discount: ""
+        discount: 0
     });
 
     const findDiscountFromState = () => {
@@ -34,7 +34,7 @@ const Products: React.FC<IProdcutProps> = ({ productId }) => {
             )
             return findDiscount?.discount
         } else {
-            return ""
+            return 0
         }
     }
 

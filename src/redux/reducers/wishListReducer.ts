@@ -16,7 +16,7 @@ const initialState: IReduxProductSlice = {
 }
 interface IChangePrice {
     id: number;
-    discount: string;
+    discount: number;
 }
 export const productsSlice = createSlice({
     name: 'products',

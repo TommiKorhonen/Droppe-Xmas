@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import CartFinder from '../../api/CartFinder';
+import { useAppSelector } from '../../redux/hooks/hooks';
 import Products from '../dashboard/wishlists/products/Products';
 
 const ConfirmedScreen = () => {
@@ -22,12 +22,12 @@ const ConfirmedScreen = () => {
         }
     };
 
-    const totalValue = useSelector(
+    const totalValue = useAppSelector(
         (state) => state.products.fullPrice
     );
 
 
-    const cart = useSelector(
+    const cart = useAppSelector(
         (state) => state.children.cart
     );
     if (!isLoading) {

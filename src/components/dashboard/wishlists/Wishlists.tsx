@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import ProductFinder from '../../../api/ProductFinder';
+import { useAppSelector } from '../../../redux/hooks/hooks';
 import { setProduct } from '../../../redux/reducers/wishListReducer';
 import WishlistItem from './WishlistItem'
 
 const Wishlists = () => {
-    const { children } = useSelector((state) => state.children); // Redux Main State
+    const { children } = useAppSelector((state) => state.children); // Redux Main State
     const dispatch = useDispatch()
     const setAllProducts = async () => {
         try {
